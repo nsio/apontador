@@ -1,0 +1,25 @@
+<mat-toolbar style="font-size: 1.5rem; height: 80px;">
+    <mat-toolbar-row>
+        <span>
+            <img src="./assets/img/logo_apontador.png" style="margin-top: 10%;">
+        </span>
+        <div class="container py-2">
+            <div class="row">
+                <div class="input-group col-md-7">
+                    <input class="form-control py-2" type="search" [(ngModel)]="chave" placeholder="Digite sua pesquisa" id="pesquisa">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="goPesquisa()">
+                            <img src="./assets/img/ic_search_white_24px.png" style="margin-top: 10%;">
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div style="float-right">
+            <button mat-raised-button (click)="goCadastro()">
+                <mat-icon>add</mat-icon> CADASTRE UM LOCAL
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<!-- <app-pesquisa></app-pesquisa> -->

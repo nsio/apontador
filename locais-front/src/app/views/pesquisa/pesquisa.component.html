@@ -1,0 +1,70 @@
+<mat-toolbar style="font-size: 1.5rem; height: 80px;">
+    <mat-toolbar-row>
+        <span>
+            <img src="./assets/img/logo_apontador.png" style="margin-top: 10%;">
+        </span>
+        <div class="container py-2">
+            <div class="row">
+                <div class="input-group col-md-7">
+                    <input class="form-control py-2" type="search" [(ngModel)]="chave" placeholder="Digite sua pesquisa" id="pesquisa">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="pesquisarLocais(0,5)">
+                            <img src="./assets/img/ic_search_white_24px.png" style="margin-top: 10%;">
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div style="float-right">
+            <button mat-raised-button (click)="goCadastro()">
+                <mat-icon>add</mat-icon> CADASTRE UM LOCAL
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div fxLayout="row" fxLayoutAlign="center center" style="padding: 2%;">
+    
+    <ng-container *ngFor="let local of locais | paginate: config" style="margin: 0.5%;">
+        
+        <mat-card class="mat-card-local"
+                 fxFlex="0 1 calc(33.3% - 11px)" 
+                 fxFlex.lt-md="0 1 calc(50% - 11px)"
+                 fxFlex.lt-sm="100%">
+
+            <mat-card-title class="mat-card-title-local">
+                <div class="row">
+                    {{local.descricao}}
+                </div>
+            </mat-card-title>
+            
+            <mat-card-content class="mat-card-title-body">
+                <div class="row">
+                    {{local.endereco.endereco}}, {{local.endereco.numero}} - {{local.endereco.complemento}}, 
+                    {{local.endereco.bairro}}, {{local.endereco.cidade}} - {{local.endereco.cep}}
+                </div>
+                <div class="row">
+                    <b>
+                        Telefone: {{local.telefone}}
+                    </b>
+                </div>
+            </mat-card-content>
+            
+        </mat-card>
+
+    </ng-container>
+    <div style="text-align: center;">
+        <pagination-controls 
+                            [maxSize]="maxSize"
+                            [directionLinks]="directionLinks"
+                            [autoHide]="autoHide"
+                            [responsive]="responsive"
+                            [previousLabel]="labels.previousLabel"
+                            [nextLabel]="labels.nextLabel"
+                            [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                            [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                            [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                            (pageChange)="onChangedPage($event)">
+        </pagination-controls>
+    </div>
+</div>

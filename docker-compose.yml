@@ -1,0 +1,16 @@
+version: '3'
+services: 
+  spring-docker-service:
+    image: spring-docker-service
+    build:
+      context: ./locais-api
+      dockerfile: /home/nsio/projetos/apontador/locais-api/Dockerfile
+    ports:
+      - 8080:8080
+  angular-docker-service:
+    image: angular-docker-service
+    build:
+      context: ./locais-front
+      dockerfile: /home/nsio/projetos/apontador/locais-front/Dockerfile
+    ports:
+      - 4000:4000

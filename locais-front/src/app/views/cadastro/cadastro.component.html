@@ -1,0 +1,93 @@
+<mat-toolbar style="font-size: 1.5rem; height: 80px;">
+    <mat-toolbar-row>
+        <span>
+            <img src="./assets/img/logo_apontador.png" style="margin-top: 10%;">
+        </span>
+        <div class="container py-2">
+            <div class="row">
+                <div class="input-group col-md-7">
+                    <input class="form-control py-2" type="search" [(ngModel)]="chave" placeholder="Digite sua pesquisa" 
+                            id="pesquisa">
+                    <span class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" (click)="goPesquisa()">
+                            <img src="./assets/img/ic_search_white_24px.png" style="margin-top: 10%;">
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar> 
+        
+<mat-card class="mat-card-local">
+    <mat-card-title>
+        Cadastre um novo local
+    </mat-card-title>    
+    <mat-card-content>
+        <form novalidate [formGroup]="form">
+            <div class="form-group">
+                <mat-form-field class="local-cad-grid-full-width">
+                    <mat-label>Nome do Local</mat-label>
+                    <input matInput  id="nomeLocal" formControlName="descricao">
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field class="local-cad-grid-half-width">
+                    <mat-label>Telefone</mat-label>
+                    <span matPrefix>+55 &nbsp;</span>
+                    <input type="tel" matInput placeholder="(11) 99999-9999" id="telefone" formControlName="telefone"> 
+                    <mat-icon matSuffix>mode_edit</mat-icon>
+                </mat-form-field>
+            </div>
+            <div formGroupName="endereco">
+                <div class="form-group">
+                    <mat-form-field class="local-cad-grid-full-width">
+                        <mat-label>Endereço</mat-label>
+                        <input matInput placeholder="Ex. Rua Um" id="endereco" formControlName="endereco">
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="local-cad-grid-full-width">
+                        <mat-label>Complemento</mat-label>
+                        <input matInput placeholder="Ex. Casa 2 fundos" id="complemento" formControlName="complemento">
+                    </mat-form-field>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <mat-form-field class="local-cad-grid-half-width">
+                            <mat-label>Bairro</mat-label>
+                            <input matInput placeholder="Ex. Jardim São Paulo" id="bairro" formControlName="bairro">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="local-cad-grid-half-width">
+                            <mat-label>Cidade</mat-label>
+                            <input matInput placeholder="Ex. São Paulo" id="cidade" formControlName="cidade">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <mat-form-field style="width: 30%;">
+                            <mat-label>Número</mat-label>
+                            <input matInput placeholder="Ex. 680" id="numero" formControlName="numero">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <mat-form-field style="width: 30%;">
+                            <mat-label>CEP</mat-label>
+                            <input matInput #postalCode maxlength="8" placeholder="Ex. 02336040" 
+                                id="cep" formControlName="cep">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <button mat-raised-button type="submit" (click)="onSubmit()">
+                    CADASTRAR
+                </button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
+<!-- <app-dialog></app-dialog> -->
