@@ -27,7 +27,7 @@ public class LocalService {
 		return retorno;
 	}
 	
-	private LocalDTO entidadeParaDto(Local local) {
+	public LocalDTO entidadeParaDto(Local local) {
 		return new LocalDTO(local.getId(), local.getDescricao(), local.getTelefone(), 
 						   new EnderecoDTO(local.getEndereco().getId(), local.getEndereco().getCep(), 
 								           local.getEndereco().getBairro(), local.getEndereco().getCidade(), 
